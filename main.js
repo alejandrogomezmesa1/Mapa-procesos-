@@ -555,8 +555,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const pitchDots = document.querySelectorAll('.pitch-slider-dots .slider-dot');
     const btnPitchPrev = document.getElementById('btn-pitch-prev');
     const btnPitchNext = document.getElementById('btn-pitch-next');
+    const btnPitchPlayPause = document.getElementById('btn-pitch-play-pause');
+    
     let currentPitchSlide = 0;
     let pitchInterval = null;
+    let isAutoPlayActive = true; // Auto-play enabled by default
 
     function showPitchSlide(index) {
         if (pitchSlides.length === 0) return;
@@ -578,45 +581,69 @@ document.addEventListener('DOMContentLoaded', () => {
     if (btnPitchPrev && btnPitchNext) {
         btnPitchPrev.addEventListener('click', () => {
             showPitchSlide(currentPitchSlide - 1);
-            resetPitchTimer();
+            if (isAutoPlayActive) resetPitchTimer();
         });
 
         btnPitchNext.addEventListener('click', () => {
             showPitchSlide(currentPitchSlide + 1);
-            resetPitchTimer();
+            if (isAutoPlayActive) resetPitchTimer();
         });
 
         pitchDots.forEach(dot => {
             dot.addEventListener('click', function() {
                 const targetIndex = parseInt(this.getAttribute('data-index'));
                 showPitchSlide(targetIndex);
-                resetPitchTimer();
+                if (isAutoPlayActive) resetPitchTimer();
             });
         });
 
-        // Auto-play feature (changes slide every 8 seconds)
+        // Toggle Play/Pause state
+        if (btnPitchPlayPause) {
+            btnPitchPlayPause.addEventListener('click', function() {
+                isAutoPlayActive = !isAutoPlayActive;
+                if (isAutoPlayActive) {
+                    this.textContent = '⏸️';
+                    this.setAttribute('title', 'Pausar Reproducción');
+                    startPitchTimer();
+                } else {
+                    this.textContent = '▶️';
+                    this.setAttribute('title', 'Reanudar Reproducción');
+                    clearInterval(pitchInterval);
+                }
+            });
+        }
+
+        // Auto-play feature (changes slide every 60 seconds)
         function startPitchTimer() {
+            if (!isAutoPlayActive) return;
+            clearInterval(pitchInterval);
             pitchInterval = setInterval(() => {
                 showPitchSlide(currentPitchSlide + 1);
-            }, 8000);
+            }, 60000); // 60 seconds
         }
 
         function resetPitchTimer() {
-            clearInterval(pitchInterval);
-            startPitchTimer();
+            if (isAutoPlayActive) {
+                clearInterval(pitchInterval);
+                startPitchTimer();
+            }
         }
 
         // Start slide rotation
         startPitchTimer();
 
-        // Pause slideshow on hover
+        // Pause slideshow on hover only if auto-play is enabled
         const sliderWrapper = document.querySelector('.pitch-slider-wrapper');
         if (sliderWrapper) {
             sliderWrapper.addEventListener('mouseenter', () => {
-                clearInterval(pitchInterval);
+                if (isAutoPlayActive) {
+                    clearInterval(pitchInterval);
+                }
             });
             sliderWrapper.addEventListener('mouseleave', () => {
-                startPitchTimer();
+                if (isAutoPlayActive) {
+                    startPitchTimer();
+                }
             });
         }
     }

@@ -1514,6 +1514,19 @@ footer {
     box-shadow: 0 0 15px rgba(0, 158, 122, 0.4);
 }
 
+.pitch-controls-center {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+}
+
+.play-pause-btn {
+    width: 32px !important;
+    height: 32px !important;
+    font-size: 0.8rem !important;
+    border-radius: 50% !important;
+}
+
 .pitch-slider-dots {
     display: flex;
     gap: 0.6rem;
