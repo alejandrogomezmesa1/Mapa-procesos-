@@ -549,6 +549,77 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initial transform setup
     updateTransform();
+
+    // --- PITCH SLIDESHOW CONTROLLER ---
+    const pitchSlides = document.querySelectorAll('.pitch-slide');
+    const pitchDots = document.querySelectorAll('.pitch-slider-dots .slider-dot');
+    const btnPitchPrev = document.getElementById('btn-pitch-prev');
+    const btnPitchNext = document.getElementById('btn-pitch-next');
+    let currentPitchSlide = 0;
+    let pitchInterval = null;
+
+    function showPitchSlide(index) {
+        if (pitchSlides.length === 0) return;
+        
+        if (index < 0) {
+            index = pitchSlides.length - 1;
+        } else if (index >= pitchSlides.length) {
+            index = 0;
+        }
+
+        pitchSlides.forEach(slide => slide.classList.remove('active'));
+        pitchDots.forEach(dot => dot.classList.remove('active'));
+
+        pitchSlides[index].classList.add('active');
+        pitchDots[index].classList.add('active');
+        currentPitchSlide = index;
+    }
+
+    if (btnPitchPrev && btnPitchNext) {
+        btnPitchPrev.addEventListener('click', () => {
+            showPitchSlide(currentPitchSlide - 1);
+            resetPitchTimer();
+        });
+
+        btnPitchNext.addEventListener('click', () => {
+            showPitchSlide(currentPitchSlide + 1);
+            resetPitchTimer();
+        });
+
+        pitchDots.forEach(dot => {
+            dot.addEventListener('click', function() {
+                const targetIndex = parseInt(this.getAttribute('data-index'));
+                showPitchSlide(targetIndex);
+                resetPitchTimer();
+            });
+        });
+
+        // Auto-play feature (changes slide every 8 seconds)
+        function startPitchTimer() {
+            pitchInterval = setInterval(() => {
+                showPitchSlide(currentPitchSlide + 1);
+            }, 8000);
+        }
+
+        function resetPitchTimer() {
+            clearInterval(pitchInterval);
+            startPitchTimer();
+        }
+
+        // Start slide rotation
+        startPitchTimer();
+
+        // Pause slideshow on hover
+        const sliderWrapper = document.querySelector('.pitch-slider-wrapper');
+        if (sliderWrapper) {
+            sliderWrapper.addEventListener('mouseenter', () => {
+                clearInterval(pitchInterval);
+            });
+            sliderWrapper.addEventListener('mouseleave', () => {
+                startPitchTimer();
+            });
+        }
+    }
 });
 
 // --- DOCUMENT PREVIEW MODAL LOGIC (Global functions for onclick handlers) ---
