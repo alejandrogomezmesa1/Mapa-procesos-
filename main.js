@@ -226,6 +226,18 @@ const DOCUMENT_CONTENTS = {
                     <td>camargosantiago78@gmail.com</td>
                     <td>320 315 7261</td>
                 </tr>
+                <tr>
+                    <td>1025649345</td>
+                    <td><strong>Luis Gabriel Mesa</strong></td>
+                    <td>mesluis702@gmail.com</td>
+                    <td>321 393 9084</td>
+                </tr>
+                <tr>
+                    <td>1023630420</td>
+                    <td><strong>Samuel Morales Marin</strong></td>
+                    <td>samuelmarinmorales@gmail.com</td>
+                    <td>318 253 1805</td>
+                </tr>
             </tbody>
         </table>
 
