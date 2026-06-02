@@ -3,126 +3,454 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>La Coca de Jacks - Medellín | Almuerzos a Domicilio</title>
-    <meta name="description" content="Te cocinamos, empacamos y llevamos el almuerzo hasta tu puerta de trabajo. La Coca de Jacks en Medellín.">
+    <title>JackSoft & La Coca de Jacks · Mapa de Procesos y Talleres ADSO</title>
+    <meta name="description" content="Portal de desarrollo del proyecto JackSoft para la empresa La Coca de Jacks. Mapa de procesos interactivo y talleres de ingeniería de requisitos.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
-    <header class="hero">
+    <!-- Sticky Glassmorphic Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">
+                <span class="logo-dot"></span>
+                JackSoft
+            </a>
+            <ul class="nav-links">
+                <li><a href="#inicio" class="active">Inicio</a></li>
+                <li><a href="#mapa-procesos">Mapa de Procesos</a></li>
+                <li><a href="#talleres">Talleres y Documentos</a></li>
+                <li><a href="#equipo">Proyecto y Ficha</a></li>
+            </ul>
+            <div class="nav-badge">SENA ADSO</div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="inicio" class="hero">
         <div class="hero-content">
-            <h1>La Coca de Jacks <span class="highlight">· Medellín</span></h1>
-            <p class="subtitle">"Te cocinamos, empacamos y llevamos el almuerzo hasta tu puerta de trabajo"</p>
-            <div class="hero-card">
-                <h3>Nuestra Promesa</h3>
-                <p><strong>Almuerzo fresco y puntual en tu puerta</strong></p>
-                <p class="small-text">Satisfacción garantizada: Almuerzo entregado, pago registrado y coca vacía recogida.</p>
+            <div class="hero-badge-tag">ADSO · Ficha 3312824</div>
+            <h1>Gestión & Procesos de <span class="highlight">La Coca de Jacks</span></h1>
+            <p class="subtitle">Desarrollo e implementación del aplicativo <strong>JackSoft</strong> para optimizar la logística, facturación y control de viandas a domicilio en Medellín.</p>
+            
+            <div class="hero-actions">
+                <a href="#mapa-procesos" class="cta-button">Ver Mapa de Procesos</a>
+                <a href="#talleres" class="cta-secondary">Explorar Talleres</a>
             </div>
-            <a href="#procesos" class="cta-button">Conoce Nuestro Proceso</a>
+            
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-num">3</span>
+                    <span class="stat-lbl">Talleres / Entregables</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-num">12</span>
+                    <span class="stat-lbl">Subprocesos Identificados</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-num">100%</span>
+                    <span class="stat-lbl">Código Limpio Vanilla</span>
+                </div>
+            </div>
         </div>
         <div class="hero-bg"></div>
     </header>
 
-    <main id="procesos" class="container">
-        <div class="section-header">
-            <h2>Mapa de Procesos</h2>
-            <p>Así garantizamos la calidad en cada entrega</p>
-        </div>
+    <main class="container">
+        
+        <!-- SECTION: INTERACTIVE PROCESS MAP -->
+        <section id="mapa-procesos" class="section-block">
+            <div class="section-header">
+                <span class="section-tag">Mapa del Negocio</span>
+                <h2>Mapa de Procesos</h2>
+                <p>Haz clic en cualquier bloque del diagrama interactivo del SENA para explorar en detalle cada proceso de la empresa.</p>
+            </div>
 
-        <section class="process-tier strategic">
-            <h3 class="tier-title">Procesos Estratégicos</h3>
-            <div class="grid">
-                <div class="card">
-                    <div class="card-icon">📊</div>
-                    <h4>Gestión de Inteligencia de Negocio</h4>
-                    <p>Monitoreo de churn, costo por plato y KPIs para mejorar continuamente.</p>
+            <div class="process-explorer-layout">
+                <!-- SVG Viewer Card -->
+                <div class="svg-viewer-card">
+                    <div class="svg-viewer-header">
+                        <div class="svg-indicator">
+                            <span class="pulse-dot"></span>
+                            <span>Diagrama SVG Interactivo</span>
+                        </div>
+                        <div class="svg-controls">
+                            <button id="btn-zoom-in" title="Acercar">＋</button>
+                            <button id="btn-zoom-out" title="Alejar">－</button>
+                            <button id="btn-reset" title="Restablecer">⟲</button>
+                        </div>
+                    </div>
+                    <div class="svg-viewport" id="svg-viewport">
+                        <div class="svg-zoom-wrapper" id="svg-zoom-wrapper">
+                            <!-- INLINE SVG: mapa_procesos_lacoca_v2.svg -->
+                            <svg width="100%" viewBox="0 0 680 869.54" role="img" xmlns="http://www.w3.org/2000/svg" id="interactive-map">
+                            <title style="fill:rgb(0, 0, 0);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto">Mapa de procesos – La Coca de Jacks</title>
+                            <desc style="fill:rgb(0, 0, 0);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto">Mapa de procesos estilo SENA con tres niveles: procesos estratégicos, misionales y de soporte.</desc>
+                            <defs>
+                              <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                                <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                              </marker>
+                            <mask id="imagine-text-gaps-8oeob2" maskUnits="userSpaceOnUse"><rect x="0" y="0" width="680" height="869.54" fill="white"/><rect x="245.3447723388672" y="23.249910354614258" width="190.8380584716797" height="21.50017547607422" fill="black" rx="2"/><rect x="117.70677185058594" y="42.49992370605469" width="444.6858825683594" height="20.25016212463379" fill="black" rx="2"/><rect x="81.10484313964844" y="86.24990844726562" width="518.7796630859375" height="21.50017547607422" fill="black" rx="2"/><rect x="28.749984741210938" y="138.4999237060547" width="169.73919677734375" height="19.000150680541992" fill="black" rx="2"/><rect x="45.71406936645508" y="165.24990844726562" width="162.31736755371094" height="21.50017547607422" fill="black" rx="2"/><rect x="91.16374206542969" y="184.4999237060547" width="72.17203521728516" height="20.25016212463379" fill="black" rx="2"/><rect x="274.8470153808594" y="165.24990844726562" width="130.53052520751953" height="21.50017547607422" fill="black" rx="2"/><rect x="269.3684387207031" y="184.4999237060547" width="140.73387145996094" height="20.25016212463379" fill="black" rx="2"/><rect x="489.9271545410156" y="165.24990844726562" width="126.36917877197266" height="21.50017547607422" fill="black" rx="2"/><rect x="486.2259216308594" y="184.4999237060547" width="133.2275390625" height="20.25016212463379" fill="black" rx="2"/><rect x="51.68092727661133" y="207.4998779296875" width="150.71743774414062" height="20.25016212463379" fill="black" rx="2"/><rect x="227.61997985839844" y="207.4998779296875" width="226.52688598632812" height="20.25016212463379" fill="black" rx="2"/><rect x="432.79766845703125" y="207.4998779296875" width="241.2130126953125" height="20.25016212463379" fill="black" rx="2"/><rect x="28.749984741210938" y="284.4999084472656" width="239.8187255859375" height="19.000150680541992" fill="black" rx="2"/><rect x="57.75520706176758" y="311.2499084472656" width="138.72723388671875" height="21.50017547607422" fill="black" rx="2"/><rect x="89.28872680664062" y="330.4999084472656" width="74.50032043457031" height="20.25016212463379" fill="black" rx="2"/><rect x="253.1866455078125" y="311.2499084472656" width="173.91123962402344" height="21.50017547607422" fill="black" rx="2"/><rect x="291.56591796875" y="330.4999084472656" width="96.34378051757812" height="20.25016212463379" fill="black" rx="2"/><rect x="472.2511901855469" y="311.2499084472656" width="161.78396606445312" height="21.50017547607422" fill="black" rx="2"/><rect x="516.7145385742188" y="330.4999084472656" width="73.11306762695312" height="20.25016212463379" fill="black" rx="2"/><rect x="22.237274169921875" y="353.4998474121094" width="210.86184692382812" height="20.25016212463379" fill="black" rx="2"/><rect x="231.37977600097656" y="353.4998474121094" width="216.7052459716797" height="20.25016212463379" fill="black" rx="2"/><rect x="434.83868408203125" y="353.4998474121094" width="237.74069213867188" height="19.000150680541992" fill="black" rx="2"/><rect x="54.63994216918945" y="397.2499084472656" width="144.9517364501953" height="21.50017547607422" fill="black" rx="2"/><rect x="69.12250518798828" y="416.4999084472656" width="115.83952331542969" height="20.25016212463379" fill="black" rx="2"/><rect x="269.9446105957031" y="397.2499084472656" width="140.3498077392578" height="21.50017547607422" fill="black" rx="2"/><rect x="296.81011962890625" y="416.4999084472656" width="86.43126678466797" height="20.25016212463379" fill="black" rx="2"/><rect x="473.7257995605469" y="397.2499084472656" width="158.7784881591797" height="21.50017547607422" fill="black" rx="2"/><rect x="494.38031005859375" y="416.4999084472656" width="117.7907943725586" height="20.25016212463379" fill="black" rx="2"/><rect x="19.346620559692383" y="439.4998474121094" width="215.6448974609375" height="20.25016212463379" fill="black" rx="2"/><rect x="227.32701110839844" y="439.4998474121094" width="226.2779083251953" height="20.25016212463379" fill="black" rx="2"/><rect x="436.8406677246094" y="439.4998474121094" width="231.39984130859375" height="20.25016212463379" fill="black" rx="2"/><rect x="28.749984741210938" y="570.4998779296875" width="206.45184326171875" height="19.000150680541992" fill="black" rx="2"/><rect x="60.50914001464844" y="599.2498779296875" width="132.72655487060547" height="21.50017547607422" fill="black" rx="2"/><rect x="92.68719482421875" y="618.4999389648438" width="68.71033096313477" height="20.25016212463379" fill="black" rx="2"/><rect x="243.25489807128906" y="599.2498779296875" width="193.7195587158203" height="21.50017547607422" fill="black" rx="2"/><rect x="290.14013671875" y="618.4999389648438" width="99.81214141845703" height="20.25016212463379" fill="black" rx="2"/><rect x="474.692626953125" y="599.2498779296875" width="156.90228271484375" height="21.50017547607422" fill="black" rx="2"/><rect x="497.8471374511719" y="618.4999389648438" width="109.9896240234375" height="20.25016212463379" fill="black" rx="2"/><rect x="-2.5383650064468384" y="643.4998779296875" width="261.12705993652344" height="20.25016212463379" fill="black" rx="2"/><rect x="205.80335998535156" y="643.4998779296875" width="268.4775390625" height="20.25016212463379" fill="black" rx="2"/><rect x="436.2449645996094" y="643.4998779296875" width="235.2598876953125" height="20.25016212463379" fill="black" rx="2"/><rect x="58.829227447509766" y="734.2498779296875" width="562.076416015625" height="21.50017547607422" fill="black" rx="2"/><rect x="139.01922607421875" y="782.2498779296875" width="69.43444442749023" height="21.50017547607422" fill="black" rx="2"/><rect x="41.684242248535156" y="796.4998168945312" width="263.14642333984375" height="20.25016212463379" fill="black" rx="2"/><rect x="43.36394500732422" y="812.4998779296875" width="260.6103973388672" height="20.25016212463379" fill="black" rx="2"/><rect x="478.1755065917969" y="782.2498779296875" width="57.871829986572266" height="21.50017547607422" fill="black" rx="2"/><rect x="391.5339660644531" y="796.4998168945312" width="231.439208984375" height="20.25016212463379" fill="black" rx="2"/><rect x="380.30340576171875" y="812.4998779296875" width="253.48704528808594" height="20.25016212463379" fill="black" rx="2"/><rect x="130.66587829589844" y="841.4998779296875" width="419.4744873046875" height="20.25016212463379" fill="black" rx="2"/></mask></defs>
+
+                            <!-- ===== ENCABEZADO ===== -->
+                            <rect x="20" y="12" width="640" height="54" rx="10" stroke-width="0.5" style="fill:rgb(8, 80, 65);stroke:rgb(93, 202, 165);color:rgb(255, 255, 255);stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+                            <text x="340" y="34" text-anchor="middle" dominant-baseline="central" font-size="15" style="fill:rgb(250, 249, 245);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:14px;font-weight:500;text-anchor:middle;dominant-baseline:central">La Coca de Jacks · Medellín</text>
+                            <text x="340" y="52" text-anchor="middle" dominant-baseline="central" style="fill:rgb(194, 192, 182);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:12px;font-weight:400;text-anchor:middle;dominant-baseline:central">"Te cocinamos, empacamos y llevamos el almuerzo hasta tu puerta de trabajo"</text>
+
+                            <!-- ===== CLIENTE: NECESIDADES Y SATISFACCIÓN ===== -->
+                            <rect x="20" y="78" width="640" height="38" rx="8" stroke-width="0.5" style="fill:rgb(60, 52, 137);stroke:rgb(175, 169, 236);color:rgb(255, 255, 255);stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+                            <text x="340" y="97" text-anchor="middle" dominant-baseline="central" style="fill:rgb(250, 249, 245);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:14px;font-weight:500;text-anchor:middle;dominant-baseline:central">Necesidades y expectativas del cliente · Almuerzo fresco y puntual en puerta</text>
+
+                            <!-- ===== FLECHA hacia procesos estratégicos ===== -->
+                            <line x1="340" y1="116" x2="340" y2="132" marker-end="url(#arrow)" style="fill:none;stroke:rgb(156, 154, 146);color:rgb(255, 255, 255);stroke-width:1.5px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+
+                            <!-- ===== SECCIÓN: PROCESOS ESTRATÉGICOS ===== -->
+                            <rect x="20" y="132" width="640" height="130" rx="8" fill="none" stroke="rgba(222, 220, 209, 0.3)" stroke-width="1" stroke-dasharray="4 3" style="fill:none;stroke:rgba(222, 220, 209, 0.3);color:rgb(255, 255, 255);stroke-width:1px;stroke-dasharray:4px, 3px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+                            <text x="34" y="148" dominant-baseline="central" font-weight="500" style="fill:rgb(194, 192, 182);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:12px;font-weight:500;text-anchor:start;dominant-baseline:central">PROCESOS ESTRATÉGICOS</text>
+
+                            <!-- Bloque 1: Gestión de inteligencia de negocio -->
+                            <g id="proc-inteligencia" class="clickable-process" data-process="inteligencia" style="fill:rgb(0, 0, 0);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto">
+                              <rect x="36" y="156" width="182" height="52" rx="6" stroke-width="0.5" style="fill:rgb(12, 68, 124);stroke:rgb(133, 183, 235);color:rgb(255, 255, 255);stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+                              <text x="127" y="176" text-anchor="middle" dominant-baseline="central" style="fill:rgb(181, 212, 244);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:14px;font-weight:500;text-anchor:middle;dominant-baseline:central">Gestión de inteligencia</text>
+                              <text x="127" y="194" text-anchor="middle" dominant-baseline="central" style="fill:rgb(133, 183, 235);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:12px;font-weight:400;text-anchor:middle;dominant-baseline:central">de negocio</text>
+                            </g>
+                            <!-- Bloque 2: Gestión de menús y planificación -->
+                            <g id="proc-menus" class="clickable-process" data-process="menus" style="fill:rgb(0, 0, 0);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto">
+                              <rect x="249" y="156" width="182" height="52" rx="6" stroke-width="0.5" style="fill:rgb(12, 68, 124);stroke:rgb(133, 183, 235);color:rgb(255, 255, 255);stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+                              <text x="340" y="176" text-anchor="middle" dominant-baseline="central" style="fill:rgb(181, 212, 244);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:14px;font-weight:500;text-anchor:middle;dominant-baseline:central">Gestión de menús</text>
+                              <text x="340" y="194" text-anchor="middle" dominant-baseline="central" style="fill:rgb(133, 183, 235);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:12px;font-weight:400;text-anchor:middle;dominant-baseline:central">y planificación semanal</text>
+                            </g>
+                            <!-- Bloque 3: Gestión de cupos y capacidad -->
+                            <g id="proc-cupos" class="clickable-process" data-process="cupos" style="fill:rgb(0, 0, 0);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto">
+                              <rect x="462" y="156" width="182" height="52" rx="6" stroke-width="0.5" style="fill:rgb(12, 68, 124);stroke:rgb(133, 183, 235);color:rgb(255, 255, 255);stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+                              <text x="553" y="176" text-anchor="middle" dominant-baseline="central" style="fill:rgb(181, 212, 244);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:14px;font-weight:500;text-anchor:middle;dominant-baseline:central">Gestión de cupos</text>
+                              <text x="553" y="194" text-anchor="middle" dominant-baseline="central" style="fill:rgb(133, 183, 235);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:12px;font-weight:400;text-anchor:middle;dominant-baseline:central">y capacidad operativa</text>
+                            </g>
+
+                            <!-- Sub-detalles estratégicos -->
+                            <text x="127" y="222" text-anchor="middle" style="fill:rgb(194, 192, 182);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:12px;font-weight:400;text-anchor:middle;dominant-baseline:auto">Churn · costo/plato · KPIs</text>
+                            <text x="340" y="222" text-anchor="middle" style="fill:rgb(194, 192, 182);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:12px;font-weight:400;text-anchor:middle;dominant-baseline:auto">Menús rotativos · 3 cerdo · 1 res · 1 pollo</text>
+                            <text x="553" y="222" text-anchor="middle" style="fill:rgb(194, 192, 182);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:12px;font-weight:400;text-anchor:middle;dominant-baseline:auto">Cupos límite · contratación Lun–Jue 8 pm</text>
+
+                            <!-- ===== FLECHA hacia procesos misionales ===== -->
+                            <line x1="340" y1="262" x2="340" y2="278" marker-end="url(#arrow)" style="fill:none;stroke:rgb(156, 154, 146);color:rgb(255, 255, 255);stroke-width:1.5px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+
+                            <!-- ===== SECCIÓN: PROCESOS MISIONALES ===== -->
+                            <rect x="20" y="278" width="640" height="270" rx="8" fill="none" stroke="rgba(222, 220, 209, 0.3)" stroke-width="1" stroke-dasharray="4 3" style="fill:none;stroke:rgba(222, 220, 209, 0.3);color:rgb(255, 255, 255);stroke-width:1px;stroke-dasharray:4px, 3px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+                            <text x="34" y="294" dominant-baseline="central" font-weight="500" style="fill:rgb(194, 192, 182);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:12px;font-weight:500;text-anchor:start;dominant-baseline:central">PROCESOS MISIONALES / OPERATIVOS</text>
+
+                            <!-- Fila 1 de misionales -->
+                            <!-- Bloque: Gestión de clientes -->
+                            <g id="proc-clientes" class="clickable-process" data-process="clientes" style="fill:rgb(0, 0, 0);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto">
+                              <rect x="36" y="302" width="182" height="52" rx="6" stroke-width="0.5" style="fill:rgb(113, 43, 19);stroke:rgb(240, 153, 123);color:rgb(255, 255, 255);stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+                              <text x="127" y="322" text-anchor="middle" dominant-baseline="central" style="fill:rgb(245, 196, 179);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:14px;font-weight:500;text-anchor:middle;dominant-baseline:central">Gestión de clientes</text>
+                              <text x="127" y="340" text-anchor="middle" dominant-baseline="central" style="fill:rgb(240, 153, 123);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:12px;font-weight:400;text-anchor:middle;dominant-baseline:central">y captación</text>
+                            </g>
+                            <!-- Bloque: Gestión de confirmación y pago -->
+                            <g id="proc-confirmacion" class="clickable-process" data-process="confirmacion" style="fill:rgb(0, 0, 0);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto">
+                              <rect x="249" y="302" width="182" height="52" rx="6" stroke-width="0.5" style="fill:rgb(113, 43, 19);stroke:rgb(240, 153, 123);color:rgb(255, 255, 255);stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+                              <text x="340" y="322" text-anchor="middle" dominant-baseline="central" style="fill:rgb(245, 196, 179);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:14px;font-weight:500;text-anchor:middle;dominant-baseline:central">Gestión de confirmación</text>
+                              <text x="340" y="340" text-anchor="middle" dominant-baseline="central" style="fill:rgb(240, 153, 123);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:12px;font-weight:400;text-anchor:middle;dominant-baseline:central">y pago semanal</text>
+                            </g>
+                            <!-- Bloque: Gestión de producción y empaque -->
+                            <g id="proc-produccion" class="clickable-process" data-process="produccion" style="fill:rgb(0, 0, 0);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto">
+                              <rect x="462" y="302" width="182" height="52" rx="6" stroke-width="0.5" style="fill:rgb(113, 43, 19);stroke:rgb(240, 153, 123);color:rgb(255, 255, 255);stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+                              <text x="553" y="322" text-anchor="middle" dominant-baseline="central" style="fill:rgb(245, 196, 179);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:14px;font-weight:500;text-anchor:middle;dominant-baseline:central">Gestión de producción</text>
+                              <text x="553" y="340" text-anchor="middle" dominant-baseline="central" style="fill:rgb(240, 153, 123);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:12px;font-weight:400;text-anchor:middle;dominant-baseline:central">y empaque</text>
+                            </g>
+
+                            <!-- Detalles fila 1 -->
+                            <text x="127" y="368" text-anchor="middle" style="fill:rgb(194, 192, 182);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:12px;font-weight:400;text-anchor:middle;dominant-baseline:auto">Landing · WhatsApp · CRM · alergias</text>
+                            <text x="340" y="368" text-anchor="middle" style="fill:rgb(194, 192, 182);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:12px;font-weight:400;text-anchor:middle;dominant-baseline:auto">Viernes 10 pm · MercadoPago / Nequi</text>
+                            <text x="553" y="368" text-anchor="middle" style="fill:rgb(194, 192, 182);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:12px;font-weight:400;text-anchor:middle;dominant-baseline:auto">Noche anterior · cocas listas al amanecer</text>
+
+                            <!-- Flechas entre misionales fila 1 -->
+                            <line x1="218" y1="328" x2="247" y2="328" marker-end="url(#arrow)" style="fill:none;stroke:rgb(156, 154, 146);color:rgb(255, 255, 255);stroke-width:1.5px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+                            <line x1="431" y1="328" x2="460" y2="328" marker-end="url(#arrow)" style="fill:none;stroke:rgb(156, 154, 146);color:rgb(255, 255, 255);stroke-width:1.5px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+
+                            <!-- Fila 2 de misionales -->
+                            <!-- Bloque: Gestión de entregas y logística -->
+                            <g id="proc-entregas" class="clickable-process" data-process="entregas" style="fill:rgb(0, 0, 0);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto">
+                              <rect x="36" y="388" width="182" height="52" rx="6" stroke-width="0.5" style="fill:rgb(113, 43, 19);stroke:rgb(240, 153, 123);color:rgb(255, 255, 255);stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+                              <text x="127" y="408" text-anchor="middle" dominant-baseline="central" style="fill:rgb(245, 196, 179);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:14px;font-weight:500;text-anchor:middle;dominant-baseline:central">Gestión de entregas</text>
+                              <text x="127" y="426" text-anchor="middle" dominant-baseline="central" style="fill:rgb(240, 153, 123);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:12px;font-weight:400;text-anchor:middle;dominant-baseline:central">y logística de rutas</text>
+                            </g>
+                            <!-- Bloque: Gestión de envases y trazabilidad -->
+                            <g id="proc-envases" class="clickable-process" data-process="envases" style="fill:rgb(0, 0, 0);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto">
+                              <rect x="249" y="388" width="182" height="52" rx="6" stroke-width="0.5" style="fill:rgb(113, 43, 19);stroke:rgb(240, 153, 123);color:rgb(255, 255, 255);stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+                              <text x="340" y="408" text-anchor="middle" dominant-baseline="central" style="fill:rgb(245, 196, 179);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:14px;font-weight:500;text-anchor:middle;dominant-baseline:central">Gestión de envases</text>
+                              <text x="340" y="426" text-anchor="middle" dominant-baseline="central" style="fill:rgb(240, 153, 123);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:12px;font-weight:400;text-anchor:middle;dominant-baseline:central">y trazabilidad</text>
+                            </g>
+                            <!-- Bloque: Gestión de novedades y servicio -->
+                            <g id="proc-novedades" class="clickable-process" data-process="novedades" style="fill:rgb(0, 0, 0);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto">
+                              <rect x="462" y="388" width="182" height="52" rx="6" stroke-width="0.5" style="fill:rgb(113, 43, 19);stroke:rgb(240, 153, 123);color:rgb(255, 255, 255);stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+                              <text x="553" y="408" text-anchor="middle" dominant-baseline="central" style="fill:rgb(245, 196, 179);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:14px;font-weight:500;text-anchor:middle;dominant-baseline:central">Gestión de novedades</text>
+                              <text x="553" y="426" text-anchor="middle" dominant-baseline="central" style="fill:rgb(240, 153, 123);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:12px;font-weight:400;text-anchor:middle;dominant-baseline:central">y servicio al cliente</text>
+                            </g>
+
+                            <!-- Detalles fila 2 -->
+                            <text x="127" y="454" text-anchor="middle" style="fill:rgb(194, 192, 182);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:12px;font-weight:400;text-anchor:middle;dominant-baseline:auto">Moto · aviso 5 min · espera máx. 5 min</text>
+                            <text x="340" y="454" text-anchor="middle" style="fill:rgb(194, 192, 182);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:12px;font-weight:400;text-anchor:middle;dominant-baseline:auto">Recepción coca vacía · control limpieza</text>
+                            <text x="553" y="454" text-anchor="middle" style="fill:rgb(194, 192, 182);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:12px;font-weight:400;text-anchor:middle;dominant-baseline:auto">Suspensiones · incidencias · calificación</text>
+
+                            <!-- Flecha producción → entrega -->
+                            <line x1="553" y1="354" x2="553" y2="374" stroke="rgba(222, 220, 209, 0.3)" stroke-width="1" marker-end="url(#arrow)" mask="url(#imagine-text-gaps-8oeob2)" style="fill:none;stroke:rgba(222, 220, 209, 0.3);color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+                            <line x1="553" y1="374" x2="127" y2="374" stroke="rgba(222, 220, 209, 0.3)" stroke-width="1" style="fill:none;stroke:rgba(222, 220, 209, 0.3);color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+                            <line x1="127" y1="374" x2="127" y2="386" marker-end="url(#arrow)" style="fill:none;stroke:rgb(156, 154, 146);color:rgb(255, 255, 255);stroke-width:1.5px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+
+                            <!-- ===== FLECHA hacia procesos de soporte ===== -->
+                            <line x1="340" y1="548" x2="340" y2="564" marker-end="url(#arrow)" style="fill:none;stroke:rgb(156, 154, 146);color:rgb(255, 255, 255);stroke-width:1.5px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+
+                            <!-- ===== SECCIÓN: PROCESOS DE SOPORTE ===== -->
+                            <rect x="20" y="564" width="640" height="146" rx="8" fill="none" stroke="rgba(222, 220, 209, 0.3)" stroke-width="1" stroke-dasharray="4 3" style="fill:none;stroke:rgba(222, 220, 209, 0.3);color:rgb(255, 255, 255);stroke-width:1px;stroke-dasharray:4px, 3px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+                            <text x="34" y="580" dominant-baseline="central" font-weight="500" style="fill:rgb(194, 192, 182);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:12px;font-weight:500;text-anchor:start;dominant-baseline:central">PROCESOS DE SOPORTE / APOYO</text>
+
+                            <!-- Bloque: Gestión financiera y compras -->
+                            <g id="proc-financiera" class="clickable-process" data-process="financiera" style="fill:rgb(0, 0, 0);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto">
+                              <rect x="36" y="590" width="182" height="52" rx="6" stroke-width="0.5" style="fill:rgb(99, 56, 6);stroke:rgb(239, 159, 39);color:rgb(255, 255, 255);stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+                              <text x="127" y="610" text-anchor="middle" dominant-baseline="central" style="fill:rgb(250, 199, 117);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:14px;font-weight:500;text-anchor:middle;dominant-baseline:central">Gestión financiera</text>
+                              <text x="127" y="628" text-anchor="middle" dominant-baseline="central" style="fill:rgb(239, 159, 39);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:12px;font-weight:400;text-anchor:middle;dominant-baseline:central">y compras</text>
+                            </g>
+                            <!-- Bloque: Gestión de comunicaciones -->
+                            <g id="proc-comunicaciones" class="clickable-process" data-process="comunicaciones" style="fill:rgb(0, 0, 0);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto">
+                              <rect x="249" y="590" width="182" height="52" rx="6" stroke-width="0.5" style="fill:rgb(99, 56, 6);stroke:rgb(239, 159, 39);color:rgb(255, 255, 255);stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+                              <text x="340" y="610" text-anchor="middle" dominant-baseline="central" style="fill:rgb(250, 199, 117);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:14px;font-weight:500;text-anchor:middle;dominant-baseline:central">Gestión de comunicaciones</text>
+                              <text x="340" y="628" text-anchor="middle" dominant-baseline="central" style="fill:rgb(239, 159, 39);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:12px;font-weight:400;text-anchor:middle;dominant-baseline:central">y notificaciones</text>
+                            </g>
+                            <!-- Bloque: Gestión de evaluación y mejora -->
+                            <g id="proc-evaluacion" class="clickable-process" data-process="evaluacion" style="fill:rgb(0, 0, 0);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto">
+                              <rect x="462" y="590" width="182" height="52" rx="6" stroke-width="0.5" style="fill:rgb(99, 56, 6);stroke:rgb(239, 159, 39);color:rgb(255, 255, 255);stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+                              <text x="553" y="610" text-anchor="middle" dominant-baseline="central" style="fill:rgb(250, 199, 117);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:14px;font-weight:500;text-anchor:middle;dominant-baseline:central">Gestión de evaluación</text>
+                              <text x="553" y="628" text-anchor="middle" dominant-baseline="central" style="fill:rgb(239, 159, 39);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:12px;font-weight:400;text-anchor:middle;dominant-baseline:central">y mejora continua</text>
+                            </g>
+
+                            <!-- Detalles soporte -->
+                            <text x="127" y="658" text-anchor="middle" style="fill:rgb(194, 192, 182);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:12px;font-weight:400;text-anchor:middle;dominant-baseline:auto">Planes sem/quin/mens · pedido sábado 10 am</text>
+                            <text x="340" y="658" text-anchor="middle" style="fill:rgb(194, 192, 182);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:12px;font-weight:400;text-anchor:middle;dominant-baseline:auto">Grupo difusión · menú semanal · recordatorios</text>
+                            <text x="553" y="658" text-anchor="middle" style="fill:rgb(194, 192, 182);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:12px;font-weight:400;text-anchor:middle;dominant-baseline:auto">KPIs: retención · envases · tiempo · costo</text>
+
+                            <!-- ===== FLECHA salida hacia satisfacción cliente ===== -->
+                            <line x1="340" y1="710" x2="340" y2="726" marker-end="url(#arrow)" style="fill:none;stroke:rgb(156, 154, 146);color:rgb(255, 255, 255);stroke-width:1.5px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+
+                            <!-- ===== CLIENTE: SATISFACCIÓN ===== -->
+                            <rect x="20" y="726" width="640" height="38" rx="8" stroke-width="0.5" style="fill:rgb(60, 52, 137);stroke:rgb(175, 169, 236);color:rgb(255, 255, 255);stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+                            <text x="340" y="745" text-anchor="middle" dominant-baseline="central" style="fill:rgb(250, 249, 245);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:14px;font-weight:500;text-anchor:middle;dominant-baseline:central">Satisfacción del cliente · Almuerzo entregado · Pago registrado · Coca vacía recogida</text>
+
+                            <!-- ===== ENTRADAS Y SALIDAS ===== -->
+                            <rect x="20" y="776" width="306" height="68" rx="8" stroke-width="0.5" style="fill:rgb(68, 68, 65);stroke:rgb(180, 178, 169);color:rgb(255, 255, 255);stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+                            <text x="173" y="793" text-anchor="middle" dominant-baseline="central" style="fill:rgb(250, 249, 245);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:14px;font-weight:500;text-anchor:middle;dominant-baseline:central">Entradas</text>
+                            <text x="173" y="811" text-anchor="middle" style="fill:rgb(194, 192, 182);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:12px;font-weight:400;text-anchor:middle;dominant-baseline:auto">Confirmación viernes · comprobante de pago</text>
+                            <text x="173" y="827" text-anchor="middle" style="fill:rgb(194, 192, 182);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:12px;font-weight:400;text-anchor:middle;dominant-baseline:auto">Lista de clientes · materia prima proveedores</text>
+
+                            <rect x="354" y="776" width="306" height="68" rx="8" stroke-width="0.5" style="fill:rgb(68, 68, 65);stroke:rgb(180, 178, 169);color:rgb(255, 255, 255);stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+                            <text x="507" y="793" text-anchor="middle" dominant-baseline="central" style="fill:rgb(250, 249, 245);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:14px;font-weight:500;text-anchor:middle;dominant-baseline:central">Salidas</text>
+                            <text x="507" y="811" text-anchor="middle" style="fill:rgb(194, 192, 182);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:12px;font-weight:400;text-anchor:middle;dominant-baseline:auto">Almuerzo entregado · cliente notificado</text>
+                            <text x="507" y="827" text-anchor="middle" style="fill:rgb(194, 192, 182);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:12px;font-weight:400;text-anchor:middle;dominant-baseline:auto">Coca vacía recogida · pedido a proveedores</text>
+
+                            <!-- Pie de página -->
+                            <text x="340" y="856" text-anchor="middle" style="fill:rgb(194, 192, 182);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:12px;font-weight:400;text-anchor:middle;dominant-baseline:auto">Calle 28a #65a-24, Medellín · 311 643 7887 · lacocadejacksmed@gmail.com</text>
+                            </svg>
+                        </div>
+                    </div>
                 </div>
-                <div class="card">
-                    <div class="card-icon">📋</div>
-                    <h4>Gestión de Menús y Planificación</h4>
-                    <p>Menús rotativos semanales equilibrados: 3 cerdo, 1 res, 1 pollo.</p>
-                </div>
-                <div class="card">
-                    <div class="card-icon">📈</div>
-                    <h4>Gestión de Cupos y Capacidad</h4>
-                    <p>Cupos límite controlados y contratación gestionada de lunes a jueves.</p>
+
+                <!-- Process Details Card -->
+                <div class="process-details-card" id="process-details-container">
+                    <div class="details-placeholder" id="details-placeholder">
+                        <div class="placeholder-icon">🖱️</div>
+                        <h4>Explorador de Procesos</h4>
+                        <p>Haz clic en cualquier caja de proceso en el diagrama para ver sus objetivos, entradas, salidas y responsables en este panel.</p>
+                    </div>
+                    
+                    <div class="details-content hidden" id="details-content">
+                        <div class="details-badge" id="details-type">Proceso Estratégico</div>
+                        <h3 id="details-title">Nombre del Proceso</h3>
+                        
+                        <div class="details-section">
+                            <h5>🎯 Objetivo / Descripción</h5>
+                            <p id="details-desc">Descripción del proceso seleccionado.</p>
+                        </div>
+
+                        <div class="details-section">
+                            <h5>📥 Entradas Principales</h5>
+                            <p id="details-inputs">Entradas y requerimientos iniciales.</p>
+                        </div>
+
+                        <div class="details-section">
+                            <h5>📤 Salidas / Resultados</h5>
+                            <p id="details-outputs">Entregables y valor generado.</p>
+                        </div>
+
+                        <div class="details-section">
+                            <h5>⚡ Indicadores Clave (KPIs)</h5>
+                            <ul class="kpi-list" id="details-kpis">
+                                <li>KPI 1</li>
+                                <li>KPI 2</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section class="process-tier core">
-            <h3 class="tier-title">Procesos Misionales / Operativos</h3>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-marker">1</div>
-                    <div class="timeline-content">
-                        <h4>Gestión de Clientes y Captación</h4>
-                        <p>Atención vía WhatsApp y CRM. Registro detallado de alergias y preferencias.</p>
+        <!-- SECTION: WORKSHOPS & DOCUMENTATION -->
+        <section id="talleres" class="section-block">
+            <div class="section-header">
+                <span class="section-tag">Biblioteca Digital</span>
+                <h2>Talleres y Documentación</h2>
+                <p>Explora y descarga los entregables del programa ADSO relacionados con el análisis de requerimientos del sistema JackSoft.</p>
+            </div>
+
+            <div class="docs-grid">
+                <!-- Doc 1: Ficha Proyecto -->
+                <div class="doc-card">
+                    <div class="doc-badge badge-sena">Ficha Técnica</div>
+                    <div class="doc-icon">📁</div>
+                    <h4>Ficha del Proyecto JackSoft</h4>
+                    <p>Ficha de caracterización de JackSoft para la empresa La Coca de Jacks. Detalla aprendices, instructores, ficha y cliente.</p>
+                    <div class="doc-actions">
+                        <button class="btn-preview" onclick="openDocPreview('ficha')">👁️ Ver Contenido</button>
+                        <div class="btn-group-download">
+                            <a href="Formato_Ficha_Proyecto_jackSoft.docx" class="btn-download word" download title="Descargar Word">Word</a>
+                            <a href="Formato_Ficha_Proyecto_jackSoft.pdf" class="btn-download pdf" download title="Descargar PDF">PDF</a>
+                        </div>
                     </div>
                 </div>
-                <div class="timeline-item">
-                    <div class="timeline-marker">2</div>
-                    <div class="timeline-content">
-                        <h4>Gestión de Confirmación y Pago Semanal</h4>
-                        <p>Cierre de pedidos viernes 10 PM. Pagos fáciles por MercadoPago o Nequi.</p>
+
+                <!-- Doc 2: Que son los requisitos -->
+                <div class="doc-card">
+                    <div class="doc-badge badge-req">Conceptos</div>
+                    <div class="doc-icon">📝</div>
+                    <h4>Conceptos de Ingeniería de Requisitos</h4>
+                    <p>Definición de requisitos funcionales y no funcionales, técnicas de recolección (elicitación), análisis, MoSCoW y validación.</p>
+                    <div class="doc-actions">
+                        <button class="btn-preview" onclick="openDocPreview('requisitos')">👁️ Ver Contenido</button>
+                        <div class="btn-group-download">
+                            <a href="¿Qué son los requisitos_.docx" class="btn-download word" download title="Descargar Word">Word</a>
+                            <a href="¿Qué son los requisitos_.pdf" class="btn-download pdf" download title="Descargar PDF">PDF</a>
+                        </div>
                     </div>
                 </div>
-                <div class="timeline-item">
-                    <div class="timeline-marker">3</div>
-                    <div class="timeline-content">
-                        <h4>Gestión de Producción y Empaque</h4>
-                        <p>Preparación desde la noche anterior. Cocas listas y frescas al amanecer.</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-marker">4</div>
-                    <div class="timeline-content">
-                        <h4>Gestión de Entregas y Logística de Rutas</h4>
-                        <p>Rutas en moto optimizadas. Te avisamos 5 minutos antes para una entrega sin demoras.</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-marker">5</div>
-                    <div class="timeline-content">
-                        <h4>Gestión de Envases, Trazabilidad y Novedades</h4>
-                        <p>Recepción de la coca vacía con estricto control de limpieza. Atención ágil a incidencias y servicio al cliente.</p>
+
+                <!-- Doc 3: Por que es importante conocer en detalle -->
+                <div class="doc-card">
+                    <div class="doc-badge badge-comm">Metodología</div>
+                    <div class="doc-icon">💬</div>
+                    <h4>Elicitación y Comunicación con Cliente</h4>
+                    <p>Estudio de la comunicación eficaz, técnica del espejo, reducción de costos en diseño y dinámicas ágiles de trabajo en equipo.</p>
+                    <div class="doc-actions">
+                        <button class="btn-preview" onclick="openDocPreview('comunicacion')">👁️ Ver Contenido</button>
+                        <div class="btn-group-download">
+                            <a href="Por qué es importante conocer en detalle.docx" class="btn-download word" download title="Descargar Word">Word</a>
+                            <a href="Por qué es importante conocer en detalle.pdf" class="btn-download pdf" download title="Descargar PDF">PDF</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="process-tier support">
-            <h3 class="tier-title">Procesos de Soporte y Apoyo</h3>
-            <div class="grid">
-                <div class="card support-card">
-                    <h4>Gestión Financiera y Compras</h4>
-                    <p>Planes semanales, quincenales y mensuales. Compras planificadas cada sábado 10 AM.</p>
+        <!-- SECTION: SENA PROJECT & TEAM -->
+        <section id="equipo" class="section-block">
+            <div class="section-header">
+                <span class="section-tag">Desarrolladores</span>
+                <h2>Información del Proyecto</h2>
+                <p>Tecnología en Análisis y Desarrollo de Software (ADSO) · Centro de Formación SENA</p>
+            </div>
+
+            <div class="team-layout">
+                <!-- Left: Card Info -->
+                <div class="project-info-card">
+                    <div class="project-info-header">
+                        <div class="sena-logo-text">SENA</div>
+                        <h3>ADSO · Ficha 3312824</h3>
+                    </div>
+                    <div class="project-info-body">
+                        <div class="info-row">
+                            <span class="info-label">Aplicativo:</span>
+                            <span class="info-val">JackSoft</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Sector:</span>
+                            <span class="info-val">Economía Popular</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Cliente:</span>
+                            <span class="info-val">La Coca de Jacks SAS (Richard Ortiz)</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Instructor Titular:</span>
+                            <span class="info-val">Newton Willard Pomare</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="card support-card">
-                    <h4>Gestión de Comunicaciones y Notificaciones</h4>
-                    <p>Grupos de difusión para el menú semanal y recordatorios oportunos.</p>
-                </div>
-                <div class="card support-card">
-                    <h4>Gestión de Evaluación y Mejora Continua</h4>
-                    <p>Medición constante de retención, envases, tiempos y costos.</p>
+
+                <!-- Right: Grid of Apprentices -->
+                <div class="apprentices-grid">
+                    <div class="apprentice-card">
+                        <div class="app-avatar">AG</div>
+                        <div class="app-info">
+                            <h4>Alejandro Gomez Mesa</h4>
+                            <p>Aprendiz ADSO</p>
+                            <span class="app-email">alejandrogomezmesa1@gmail.com</span>
+                        </div>
+                    </div>
+                    <div class="apprentice-card">
+                        <div class="app-avatar">OM</div>
+                        <div class="app-info">
+                            <h4>Omar David Meneses Verona</h4>
+                            <p>Aprendiz ADSO</p>
+                            <span class="app-email">ODMV36335917@soy.sena.edu.co</span>
+                        </div>
+                    </div>
+                    <div class="apprentice-card">
+                        <div class="app-avatar">EC</div>
+                        <div class="app-info">
+                            <h4>Erick Santiago Camargo</h4>
+                            <p>Aprendiz ADSO</p>
+                            <span class="app-email">camargosantiago78@gmail.com</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
+
     </main>
 
+    <!-- FOOTER -->
     <footer>
         <div class="footer-content">
-            <h2>La Coca de Jacks</h2>
+            <h2>La Coca de Jacks & JackSoft</h2>
+            <p class="footer-tagline">"Te cocinamos, empacamos y llevamos el almuerzo hasta tu puerta de trabajo"</p>
             <div class="contact-info">
                 <p>📍 Calle 28a #65a-24, Medellín</p>
                 <p>📞 311 643 7887</p>
                 <p>✉️ lacocadejacksmed@gmail.com</p>
             </div>
-            <p class="copyright">© 2026 La Coca de Jacks. Todos los derechos reservados.</p>
+            <p class="copyright">© 2026 ADSO Ficha 3312824. Todos los derechos reservados.</p>
         </div>
     </footer>
+
+    <!-- DOCUMENT PREVIEW MODAL -->
+    <div id="preview-modal" class="modal-overlay">
+        <div class="modal-container">
+            <div class="modal-header">
+                <div>
+                    <span class="modal-tag" id="modal-doc-tag">Documento</span>
+                    <h3 id="modal-doc-title">Vista Previa de Documento</h3>
+                </div>
+                <button class="modal-close" onclick="closeDocPreview()">&times;</button>
+            </div>
+            <div class="modal-body" id="modal-doc-content">
+                <!-- Populated dynamically via Javascript -->
+            </div>
+            <div class="modal-footer">
+                <button class="btn-close-modal" onclick="closeDocPreview()">Cerrar Vista Previa</button>
+            </div>
+        </div>
+    </div>
+
     <script src="main.js"></script>
 </body>
 </html>
