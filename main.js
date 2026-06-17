@@ -1,7 +1,7 @@
 // Data store for Process Details
 const PROCESS_DATA = {
     inteligencia: {
-        title: "Gestión de Inteligencia de Negocio",
+        title: "Proceso Gestión de Inteligencia de Negocio",
         type: "strategic",
         typeName: "Proceso Estratégico",
         desc: "Monitoreo del comportamiento global del negocio mediante análisis de métricas clave de retención y rentabilidad para la toma de decisiones directivas.",
@@ -14,7 +14,7 @@ const PROCESS_DATA = {
         ]
     },
     menus: {
-        title: "Gestión de Menús y Planificación Semanal",
+        title: "Proceso Gestión de Menús y Planificación Semanal",
         type: "strategic",
         typeName: "Proceso Estratégico",
         desc: "Planificación balanceada de las opciones alimenticias semanales, asegurando la variedad nutricional y la viabilidad operativa de la cocina.",
@@ -27,7 +27,7 @@ const PROCESS_DATA = {
         ]
     },
     cupos: {
-        title: "Gestión de Cupos y Capacidad Operativa",
+        title: "Proceso Gestión de Cupos y Capacidad Operativa",
         type: "strategic",
         typeName: "Proceso Estratégico",
         desc: "Control del volumen máximo de pedidos procesables por día para garantizar que la cocina y el equipo de reparto mantengan los estándares de puntualidad y calidad.",
@@ -40,7 +40,7 @@ const PROCESS_DATA = {
         ]
     },
     clientes: {
-        title: "Gestión de Clientes y Captación",
+        title: "Proceso Gestión de Clientes y Captación",
         type: "misional",
         typeName: "Proceso Misional / Operativo",
         desc: "Atención al cliente mediante canales digitales, registro de nuevos usuarios en el CRM, y control estricto de requerimientos dietarios.",
@@ -53,7 +53,7 @@ const PROCESS_DATA = {
         ]
     },
     confirmacion: {
-        title: "Gestión de Confirmación y Pago Semanal",
+        title: "Proceso Gestión de Confirmación y Pago Semanal",
         type: "misional",
         typeName: "Proceso Misional / Operativo",
         desc: "Consolidación de las confirmaciones semanales de los suscriptores y registro de los pagos a través de canales digitales antes del corte operativo.",
@@ -66,7 +66,7 @@ const PROCESS_DATA = {
         ]
     },
     produccion: {
-        title: "Gestión de Producción y Empaque",
+        title: "Proceso Gestión de Producción y Empaque",
         type: "misional",
         typeName: "Proceso Misional / Operativo",
         desc: "Preparación culinaria bajo altos estándares higiénicos y empaquetado en envases herméticos reutilizables. El proceso arranca la noche anterior.",
@@ -79,7 +79,7 @@ const PROCESS_DATA = {
         ]
     },
     entregas: {
-        title: "Gestión de Entregas y Logística de Rutas",
+        title: "Proceso Gestión de Entregas y Logística de Rutas",
         type: "misional",
         typeName: "Proceso Misional / Operativo",
         desc: "Planificación de rutas de despacho y transporte motorizado de las viandas, garantizando la cadena de temperatura y la puntualidad.",
@@ -92,7 +92,7 @@ const PROCESS_DATA = {
         ]
     },
     envases: {
-        title: "Gestión de Envases, Trazabilidad y Limpieza",
+        title: "Proceso Gestión de Envases, Trazabilidad y Limpieza",
         type: "misional",
         typeName: "Proceso Misional / Operativo",
         desc: "Control físico de las cocas retornables de vidrio, asegurando su recolección diaria, su limpieza industrial y su disponibilidad para producción.",
@@ -105,7 +105,7 @@ const PROCESS_DATA = {
         ]
     },
     novedades: {
-        title: "Gestión de Novedades y Servicio al Cliente",
+        title: "Proceso Gestión de Novedades y Servicio al Cliente",
         type: "misional",
         typeName: "Proceso Misional / Operativo",
         desc: "Resolución de incidencias diarias, tales como ausencias de clientes, cancelaciones temporales, reprogramaciones de rutas y retroalimentación de calidad.",
@@ -118,7 +118,7 @@ const PROCESS_DATA = {
         ]
     },
     financiera: {
-        title: "Gestión Financiera y Compras",
+        title: "Proceso Gestión Financiera y Compras",
         type: "support",
         typeName: "Proceso de Soporte y Apoyo",
         desc: "Administración del flujo de caja, control de egresos, facturación de suscripciones, y compras mayoristas programadas.",
@@ -131,7 +131,7 @@ const PROCESS_DATA = {
         ]
     },
     comunicaciones: {
-        title: "Gestión de Comunicaciones y Notificaciones",
+        title: "Proceso Gestión de Comunicaciones y Notificaciones",
         type: "support",
         typeName: "Proceso de Soporte y Apoyo",
         desc: "Envío sistematizado de notificaciones informativas a los grupos de difusión sobre menús de la semana, encuestas de retroalimentación y alertas festivas.",
@@ -144,7 +144,7 @@ const PROCESS_DATA = {
         ]
     },
     evaluacion: {
-        title: "Gestión de Evaluación y Mejora Continua",
+        title: "Proceso Gestión de Evaluación y Mejora Continua",
         type: "support",
         typeName: "Proceso de Soporte y Apoyo",
         desc: "Auditoría interna de procesos operativos y estratégicos para identificar cuellos de botella en la entrega o sobrecostos en materias primas.",
